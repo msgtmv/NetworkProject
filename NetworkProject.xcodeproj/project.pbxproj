@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		F664991A2BA8FCD6003E49BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66499192BA8FCD6003E49BE /* AppDelegate.swift */; };
 		F664991C2BA8FCD6003E49BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F664991B2BA8FCD6003E49BE /* SceneDelegate.swift */; };
-		F664991E2BA8FCD6003E49BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F664991D2BA8FCD6003E49BE /* ViewController.swift */; };
+		F664991E2BA8FCD6003E49BE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F664991D2BA8FCD6003E49BE /* MainViewController.swift */; };
 		F66499212BA8FCD6003E49BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F664991F2BA8FCD6003E49BE /* Main.storyboard */; };
 		F66499232BA8FCD8003E49BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F66499222BA8FCD8003E49BE /* Assets.xcassets */; };
 		F66499262BA8FCD8003E49BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F66499242BA8FCD8003E49BE /* LaunchScreen.storyboard */; };
+		F66499332BA8FDF5003E49BE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66499322BA8FDF5003E49BE /* NetworkManager.swift */; };
+		F66499352BA8FE98003E49BE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66499342BA8FE98003E49BE /* Board.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F66499162BA8FCD6003E49BE /* NetworkProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66499192BA8FCD6003E49BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F664991B2BA8FCD6003E49BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F664991D2BA8FCD6003E49BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F664991D2BA8FCD6003E49BE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F66499202BA8FCD6003E49BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F66499222BA8FCD8003E49BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F66499252BA8FCD8003E49BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F66499272BA8FCD8003E49BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F66499322BA8FDF5003E49BE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F66499342BA8FE98003E49BE /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,57 @@
 		F66499182BA8FCD6003E49BE /* NetworkProject */ = {
 			isa = PBXGroup;
 			children = (
-				F66499192BA8FCD6003E49BE /* AppDelegate.swift */,
-				F664991B2BA8FCD6003E49BE /* SceneDelegate.swift */,
-				F664991D2BA8FCD6003E49BE /* ViewController.swift */,
-				F664991F2BA8FCD6003E49BE /* Main.storyboard */,
+				F66499312BA8FD98003E49BE /* Services */,
+				F66499302BA8FD8A003E49BE /* ViewControllers */,
+				F664992F2BA8FD7F003E49BE /* Models */,
+				F664992E2BA8FD66003E49BE /* Storyboards */,
+				F664992D2BA8FD5D003E49BE /* App */,
 				F66499222BA8FCD8003E49BE /* Assets.xcassets */,
-				F66499242BA8FCD8003E49BE /* LaunchScreen.storyboard */,
-				F66499272BA8FCD8003E49BE /* Info.plist */,
 			);
 			path = NetworkProject;
+			sourceTree = "<group>";
+		};
+		F664992D2BA8FD5D003E49BE /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F66499272BA8FCD8003E49BE /* Info.plist */,
+				F664991B2BA8FCD6003E49BE /* SceneDelegate.swift */,
+				F66499192BA8FCD6003E49BE /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F664992E2BA8FD66003E49BE /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F664991F2BA8FCD6003E49BE /* Main.storyboard */,
+				F66499242BA8FCD8003E49BE /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F664992F2BA8FD7F003E49BE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F66499342BA8FE98003E49BE /* Board.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F66499302BA8FD8A003E49BE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F664991D2BA8FCD6003E49BE /* MainViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F66499312BA8FD98003E49BE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F66499322BA8FDF5003E49BE /* NetworkManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +184,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F664991E2BA8FCD6003E49BE /* ViewController.swift in Sources */,
+				F66499332BA8FDF5003E49BE /* NetworkManager.swift in Sources */,
+				F664991E2BA8FCD6003E49BE /* MainViewController.swift in Sources */,
+				F66499352BA8FE98003E49BE /* Board.swift in Sources */,
 				F664991A2BA8FCD6003E49BE /* AppDelegate.swift in Sources */,
 				F664991C2BA8FCD6003E49BE /* SceneDelegate.swift in Sources */,
 			);
@@ -294,9 +342,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R3J978T828;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NetworkProject/Info.plist;
+				INFOPLIST_FILE = NetworkProject/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -307,9 +355,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.MuslimGapparov.NetworkProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -322,9 +374,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R3J978T828;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NetworkProject/Info.plist;
+				INFOPLIST_FILE = NetworkProject/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -335,9 +387,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.MuslimGapparov.NetworkProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
