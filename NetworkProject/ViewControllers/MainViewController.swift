@@ -12,10 +12,15 @@ final class MainViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var pagesLabel: UILabel!
     
+    let url = URL(string: "https://a.4cdn.org/boards.json")!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NetworkManager.shared.fetch(MainBoard.self, withURL: "https://a.4cdn.org/boards.json") { [weak self] result in
+        fetch()
+    }
+
+    private func fetch() {
+        NetworkManager.shared.fetch(withURL: url) { [weak self] result in
             switch result {
             case .success(let mainBoard):
                 let board = mainBoard.boards[1]
@@ -28,7 +33,5 @@ final class MainViewController: UIViewController {
             }
         }
     }
-
-
 }
 

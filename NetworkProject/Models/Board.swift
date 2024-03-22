@@ -9,6 +9,19 @@ import Foundation
 
 struct MainBoard: Decodable {
     let boards: [Board]
+    
+    init(boards: [Board]) {
+        self.boards = boards
+    }
+    
+    init(boardData: [String: Any]) {
+        boards = boardData["boards"] as? [Board] ?? []
+    }
+    
+    static func getMainBoard(from value: Any) -> MainBoard {
+        guard let value = value as? [String: Any] else { return MainBoard(boards: []) }
+        return MainBoard(boardData: value)
+    }
 }
 
 struct Board: Decodable {

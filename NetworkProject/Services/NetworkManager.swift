@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum NetworkError: Error {
     case invalidURL
@@ -16,33 +17,40 @@ enum NetworkError: Error {
 final class NetworkManager {
     static let shared = NetworkManager()
     
-    func fetch(_ type: MainBoard.Type, withURL url: String, completion: @escaping (_ result: Result<MainBoard, NetworkError>) -> Void) {
-        guard let url = URL(string: url) else {
-            completion(.failure(.invalidURL))
-            return
-        }
+    func fetch(withURL url: URL, completion: @escaping (_ result: Result<MainBoard, AFError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseJSON { dataResponce in
+                switch dataResponce.result {
+                case .success(let value):
+                    let mainBoard = MainBoard.getMainBoard(from: value)
+                    completion(.success(mainBoard))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                completion(.failure(.noData))
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            do {
-                let data = try decoder.decode(MainBoard.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(data))
-                }
-            } catch let error {
-                print(error)
-                DispatchQueue.main.async {
-                    completion(.failure(.decodingError))
-                }
-            }
-        }.resume()
+//        URLSession.shared.dataTask(with: url) { data, _, error in
+//            guard let data = data else {
+//                completion(.failure(.noData))
+//                return
+//            }
+//            
+//            let decoder = JSONDecoder()
+//            decoder.keyDecodingStrategy = .convertFromSnakeCase
+//            
+//            do {
+//                let data = try decoder.decode(MainBoard.self, from: data)
+//                DispatchQueue.main.async {
+//                    completion(.success(data))
+//                }
+//            } catch let error {
+//                print(error)
+//                DispatchQueue.main.async {
+//                    completion(.failure(.decodingError))
+//                }
+//            }
+//        }.resume()
         
     }
     
